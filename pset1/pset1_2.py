@@ -37,9 +37,9 @@ df = lambda x : 1/(1+x**2)
 dx= ndiff(f,x,True)[1]
 
 #testing
-print('true : ',df(x))
-print('deriv : ',ndiff(f,x,False))
-print('scipy :', derivative(f,x,dx))
+print('true : ',df(x)) #true derivative of fcn inputed, need to do manually
+print('deriv : ',ndiff(f,x,False)) #derivative computed using central difference
+print('scipy :', derivative(f,x,dx)) #compute deriv using scipy to compare with result obtain
 print('\n')
 print('diff true/deriv is :',df(x)-ndiff(f,x,False))
 print('diff scipy/deriv is :',derivative(f,x,dx)-ndiff(f,x,False))
