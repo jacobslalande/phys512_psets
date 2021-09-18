@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy import interpolate
 
-npt = 10
+npt = 5
 #note that if npt != 5 then the rational fit is garbage
 
 #define spline
