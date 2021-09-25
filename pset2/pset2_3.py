@@ -43,7 +43,7 @@ plt.plot(new_x,np.polynomial.chebyshev.chebval(new_x,truncated_coeff))
 #plt.plot(x_scale,y,'.')
 plt.show()
 
-'''
+
 a=0.01
 b=0.5
 x_ = np.linspace(a,b,5000)
@@ -82,5 +82,5 @@ print('diff',diff)
 plt.plot(x_scale2,np.polynomial.chebyshev.chebval(x_scale2,truncated_coeff))
 plt.plot(x_scale2,y_true,'.')
 #plt.show()
-'''
+
 
