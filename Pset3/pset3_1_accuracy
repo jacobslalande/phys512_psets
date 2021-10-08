@@ -1,0 +1,5 @@
+num of steps second stepper : 2400 
+num of steps first stepper : 796 
+number of steps such that same number of fcn eval for 2nd stepper : 66.33333333333333
+error first integrator :  0.00011776140522523524 
+error second integrator :  9.137964158317659e-06
