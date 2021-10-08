@@ -63,12 +63,3 @@ print('The reduced chi-square for the fit using the new N is :',chi_square)
 #focal length : f=1/4a where a has unit of 1/length, the error on f is computed by propagating the error
 f= 1/(4*m[0]*1000) #compute focal length
 print('Focal length :',f,'+/-',(error_a/m[0])*f)
-
-
-#fig, (ax1,ax2) = plt.subplots(2,1)
-#ax1.plot(x, noise/unc_data,'.')
-#ax2.plot(y, noise/unc_data,'.')
-
-#ax1.errorbar(x,z,yerr=np.sqrt(np.diag(N)),fmt='.')
-
-#plt.show()
