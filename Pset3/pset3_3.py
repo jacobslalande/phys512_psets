@@ -1,9 +1,5 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from scipy.optimize import curve_fit
-
-
-#compare with fitting with scipy
 
 data = np.loadtxt('dish_zenith.txt')
 
@@ -11,94 +7,68 @@ x = data[:,0]
 y = data[:,1]
 z = data[:,2]
 
-
-
-def func(X, a, x_0, y_0, z_0):
-    x, y = X
-    z = a*((x-x_0)**2+(y-y_0)**2)
-    return z
-
-
-def fun(X,a,b,c,d):
-    x, y = X
-    z = (x**2 + y**2)*a - (2*x*b) - (2*x*c) + d
-    return z
-
-popt, pcov = curve_fit(fun, (x,y), z)
-
-#print(popt)
-
+#construct A matrix
 nd = len(x)
 nm = 4
-A = np.zeros([nd,nm])
-A[:,0] = x**2 + y**2
-A[:,1] = -2*x
-A[:,2] = -2*y
-A[:,3] = 1
-
-'''
-u,s,v=np.linalg.svd(A,0) #always give a 0 so that it is efficient
-s = np.eye(4)*s
-A_svd = u@s@v.T
-param = v@np.linalg.inv(s)@u.T@z
-print(param)
-y_true = A_svd@param'''
-
-lhs = A.T@A #A transpose times A
-rhs = A.T@z # y is d (data) in notes
-m = np.linalg.inv(lhs)@rhs
-y_pred = A@m
-
-fig, (ax1,ax2, ax3 ,ax4) = plt.subplots(4,1)
-ax1.plot(x, y_pred-z,'.')
-ax2.plot(y, y_pred-z,'.')
-
-noise = z-y_pred
-
-chi_square = noise.T@noise
-print(chi_square)
-
-N = np.eye(len(noise))*noise
-print(m)
-lhs = A.T@np.linalg.inv(N)@A
-rhs = A.T@np.linalg.inv(N)@z
-m = np.linalg.inv(lhs)@rhs
-
-print(m)
 
 
-y_true = A@m
+def param(N):
+    '''
+    input : N matrix which has var as diagonal
+    output :
+    m-->parameters for lin least square  fit minimizing chi-square
+    y_pred-->the value predicted for z from A and m
+    stud_res-->studentized residuals
+    chi_square-->chi_square
+    '''
+    A = np.zeros([nd,nm])
+    A[:,0] = x**2 + y**2
+    A[:,1] = -2*x
+    A[:,2] = -2*y
+    A[:,3] = 1
+    
+    lhs = A.T@np.linalg.inv(N)@A
+    rhs = A.T@np.linalg.inv(N)@z 
+    m = np.linalg.inv(lhs)@rhs
+    
+    y_pred = A@m
+    res = (z - A@m)
+    chi_square = res.T@np.linalg.inv(N)@res
+    cov_mat = np.linalg.inv(lhs)
+    error_m = np.sqrt(np.diag(cov_mat))
+    error_a = error_m[0]
+    
+    return m, y_pred, chi_square/(len(z)-4), error_a
 
 
-noise = np.array([noise])
-noise = noise.T
+N = np.eye(len(z))
+m, y_pred,  chi_square, error_a = param(N)
+print('Fit parameters (a, x_0, y_0, z_0) are :',m[0],m[1]/m[0],m[2]/m[0],m[3]-(m[1]**2/m[0])-(m[2]**2/m[0]))
+print('The reduced chi-square for the fit is with N=I:',chi_square)
 
-m_noise = np.linalg.inv(lhs)@A.T@np.linalg.inv(N)@noise
+noise = (z-y_pred) # residuals
+
+#hence, take that error in z is proportional to absolute value of noise
+# get that std dev is np.sqrt(np.abs(noise))
+
+#assume uncorrelated noise
+N = np.sqrt(noise*noise*np.eye(len(z))) #value of variance is np.sqrt(noise*noise)
+#unc_data = np.sqrt(np.diag(N))
+m, y_pred, chi_square, error_a = param(N)
+
+print('The value for parameter a is :',m[0],'+/-',error_a)
+print('The reduced chi-square for the fit using the new N is :',chi_square)
 
 
-m_noise = np.matrix.flatten(m_noise)
-print(m_noise)
-m_new = m-m_noise
-print(m_new)
-
-y_true = A@m_new
-
-'''
-want error such that chi square is 1? seems wrong b/c adjust
-likeliness of model according to my needs
-
--go by section to find error
-
--plug noise in diag of N and compute m again
-
--want to flatten noise at extremity of x, y
-
-'''
+#focal length : f=1/4a where a has unit of 1/length, the error on f is computed by propagating the error
+f= 1/(4*m[0]*1000) #compute focal length
+print('Focal length :',f,'+/-',(error_a/m[0])*f)
 
 
 #fig, (ax1,ax2) = plt.subplots(2,1)
+#ax1.plot(x, noise/unc_data,'.')
+#ax2.plot(y, noise/unc_data,'.')
 
-ax3.plot(x, y_true-z,'.')
-ax4.plot(y, y_true-z,'.')
+#ax1.errorbar(x,z,yerr=np.sqrt(np.diag(N)),fmt='.')
 
-plt.show()
+#plt.show()
