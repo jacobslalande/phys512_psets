@@ -1,0 +1,11 @@
+Based on the χ2 value, are the parameters dialed into my test script an acceptable fit?
+-->No but the reduced chi-square of 6.104732966917895 is acceptable.
+
+What do you get for χ2 for parameters equal to [69, 0.022, 0.12, 0.06, 2.1e−9, 0.95], 
+which are closer to their currently-accepted values? (I get a value around 3270, please give a precise one.) 
+-->The value for the chi-square obtained is 3272.2053559202204 and the reduced chi-square is 1.3083587988485488.
+
+Would you consider these values an acceptablefit? 
+Note - the mean and variance of χ2 are n and 2n, respectively, where n is the number of degrees of freedom.
+--> reduced chi-square approaches unity indicating that the fit is good and 
+hence the parameters are a good model for describing the data observed.
