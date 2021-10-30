@@ -6,7 +6,7 @@ def corr(f,g):
     ft_f = np.fft.fft(f)
     conj_ft_g = np.conjugate(np.fft.fft(g))
     
-    return np.fft.ifft(ft_f*conj_ft_g)
+    return np.fft.fftshift(np.fft.ifft(ft_f*conj_ft_g))
 
 
 def gaussian(x,mu=0):
@@ -16,7 +16,7 @@ def gaussian(x,mu=0):
 x = np.linspace(-10,10,500)
 y = gaussian(x)
 
-corr = np.fft.fftshift(corr(y,y))
+corr = corr(y,y)
 
 plt.plot(np.abs(corr))
 plt.show()
