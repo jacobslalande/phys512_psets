@@ -14,10 +14,9 @@ def gaussian(x,mu=0):
     
     
 x = np.linspace(-10,10,500)
-
 y = gaussian(x)
 
-corr = corr(y,y)
+corr = np.fft.fftshift(corr(y,y))
 
 plt.plot(np.abs(corr))
 plt.show()
