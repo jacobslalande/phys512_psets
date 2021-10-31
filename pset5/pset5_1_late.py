@@ -12,8 +12,6 @@ def shifter(array,shift):
     4. inverse convolution to get shifted array
     '''
     shift = int(shift)
-    pad = shift
-    array = np.concatenate((array,np.zeros(pad)))
     N = len(array)
     
     yft = np.fft.fft(array) #step 1
@@ -45,4 +43,4 @@ plt.plot(y)
 plt.plot(y_shift)
 plt.show()
 
-plt.savefig('gauss_shift.png')
+#plt.savefig('gauss_shift.png')
