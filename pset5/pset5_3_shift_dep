@@ -1,0 +1,2 @@
+The correlation is a gaussian still, but shifted by the amount input and in the opposite direction, meaning if shift by 5 then 
+the gaussian will be centered at -5
