@@ -1,0 +1,19 @@
+data :  H-H1_LOSC_4_V2-1126259446-32.hdf5 and  L-L1_LOSC_4_V2-1126259446-32.hdf5
+estimate of noise for Hanford 80611150.426642 and Livingston 79264533.71954341
+snr Hanford 17.643867236759785 snr Livingston 13.440001328564003
+combined snr for event :  15.541934282661895 
+
+data :  H-H1_LOSC_4_V1-1167559920-32.hdf5 and  L-L1_LOSC_4_V1-1167559920-32.hdf5
+estimate of noise for Hanford 60484779.1553097 and Livingston 49170413.83010352
+snr Hanford 8.882207927521348 snr Livingston 9.398507468320279
+combined snr for event :  9.140357697920813 
+
+data :  H-H1_LOSC_4_V2-1128678884-32.hdf5 and  L-L1_LOSC_4_V2-1128678884-32.hdf5
+estimate of noise for Hanford 46438837.72491412 and Livingston 42610070.427249275
+snr Hanford 6.806864433984073 snr Livingston 6.905003824664806
+combined snr for event :  6.855934129324439 
+
+data :  H-H1_LOSC_4_V2-1135136334-32.hdf5 and  L-L1_LOSC_4_V2-1135136334-32.hdf5
+estimate of noise for Hanford 29445749.338921584 and Livingston 32364190.2746493
+snr Hanford 8.408699824591894 snr Livingston 5.6140676865353
+combined snr for event :  7.011383755563597 

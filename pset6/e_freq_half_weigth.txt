@@ -1,0 +1,2 @@
+the freq where half the wieght if above and below for each event is
+[444.65625, 444.65625, 444.65625, 444.65625]

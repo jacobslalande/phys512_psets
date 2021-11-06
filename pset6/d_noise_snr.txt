@@ -1,0 +1,16 @@
+GW150914_4_template.hdf5 
+ analytic noise :  135711780.27402976 noise estimate :  80611058.63423565 
+ratio noise estimate/noise analytic 0.5939871871952861 
+
+GW170104_4_template.hdf5 
+ analytic noise :  105941409.5686376 noise estimate :  60484549.245977685 
+ratio noise estimate/noise analytic 0.5709245279277769 
+
+LVT151012_4_template.hdf5 
+ analytic noise :  74543399.55643243 noise estimate :  46439089.84499977 
+ratio noise estimate/noise analytic 0.6229805740190781 
+
+GW151226_4_template.hdf5 
+ analytic noise :  34771715.1473334 noise estimate :  29445643.108987626 
+ratio noise estimate/noise analytic 0.8468274568631906 
+
