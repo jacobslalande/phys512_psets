@@ -8,7 +8,7 @@ from scipy import integrate
 
 
 '''
-a ran the code in the same folder as the folder of the data, so Im not sure what variable is should have that sets the directory
+I ran the code in the same folder as the folder of the data, so Im not sure what variable is should have that sets the directory
 '''
 
 def read_template(filename):
