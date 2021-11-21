@@ -1,6 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+'''
+Cant use gaussian as bounding function as it goes to 0 faster than an exp even for high sigma
+
+'''
+
 b=1
 
 #exponential distribution
