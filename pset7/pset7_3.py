@@ -5,10 +5,14 @@ from scipy.special import erf
 
 N=10000000
 def ratio_exp(b) : 
-    # Calculated Bounds 
-    umax = np.sqrt(b)
-    vmax = 2/(np.exp(1)*np.sqrt(b))
+    # Compute bounds
+    '''
+    found by isolating v from the inequality 0<=u<=sqrt(p(u/v)), 
+    then maximizing v as a fcn of u to find u maximizing v
 
+    '''
+    umax = np.sqrt(b)
+    vmax = 2/(np.exp(1)*np.sqrt(b)) 
 
     # Generate the random numbers
     u=np.random.uniform(low=0,high=umax,size=N)
