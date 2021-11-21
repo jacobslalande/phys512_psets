@@ -8,7 +8,8 @@ def ratio_exp(b) :
     '''
     found by isolating v from the inequality 0<=u<=sqrt(p(u/v)), 
     then maximizing v as a fcn of u to find u maximizing v
-
+    
+    bounds for v : 0 <= v <= 2/(np.exp(1)*np.sqrt(b))
     '''
     umax = np.sqrt(b)
     vmax = 2/(np.exp(1)*np.sqrt(b)) 
