@@ -49,10 +49,11 @@ l = M*l_pdf(xs)
 
 # Plotting Results
 plt.figure()
-plt.hist(exp_rands,bins=50,density=True, label="Samples")
-xs = np.linspace(0,max(exp_rands),1000)
-plt.plot(xs,exp(xs),label="Expected")
+plt.hist(t,bins=50,density=True, label="Samples")
+xs = np.linspace(0,max(t),1000)
+plt.plot(xs,b*np.exp(-b*xs),label="Expected")
 plt.legend()
-plt.xlabel(f"Method is {len(exp_rands)/(2*len(ys)) * 100}% Efficient")
+plt.xlabel(f"Method is {len(t)/(2*N) * 100}% Efficient")
 plt.savefig('q2_lorentzian.png')
 plt.show()
+
